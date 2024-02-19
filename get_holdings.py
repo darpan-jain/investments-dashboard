@@ -21,7 +21,6 @@ user = robin.build_user_profile()
 print(f"Holdings fetched at {time.strftime('%m/%d/%Y %H:%M:%S')}")
 
 df_stocks = pd.DataFrame(my_stocks)
-
 # Fix the column names and transpose
 df_stocks.columns.name = 'symbol'
 df_stocks = df_stocks.transpose()
