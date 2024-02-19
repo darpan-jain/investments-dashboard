@@ -8,17 +8,8 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 
 # Read the dataframes from csv
 df_stocks = pd.read_csv('data/stocks.csv', header=0)
-
-# Add column for total dollar value of each stock
-df_stocks['current_value'] = (df_stocks['quantity'] * df_stocks['price']).apply(lambda x: round(x, 3))
-# Add column for buy price of the stock
-df_stocks['buy_price'] = (df_stocks['average_buy_price'] * df_stocks['quantity']).apply(lambda x: round(x, 3))
-
-# Add column for total profit or loss of each stock
-df_stocks['profit_loss'] = (df_stocks['current_value'] - df_stocks['buy_price']).apply(lambda x: round(x, 3))
-
-# df_crypto = pd.read_csv('data/crypto.csv')
-# df_user = pd.read_csv('data/user.csv')
+df_crypto = pd.read_csv('data/crypto.csv')
+df_user = pd.read_csv('data/user.csv')
 print(f"Dataframes loaded from {DATA_DIR}. Creating investment dashboard...")
 
 # Print all columns in the stocks dataframe

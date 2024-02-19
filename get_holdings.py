@@ -21,10 +21,14 @@ user = robin.build_user_profile()
 print(f"Holdings fetched at {time.strftime('%m/%d/%Y %H:%M:%S')}")
 
 df_stocks = pd.DataFrame(my_stocks)
-# Add name for first header row
+
+# Fix the column names and transpose
 df_stocks.columns.name = 'symbol'
-# Swap the rows and columns
 df_stocks = df_stocks.transpose()
+# Preprocess the holdings data
+df_stocks['current_value'] = (df_stocks['quantity'] * df_stocks['price']).apply(lambda x: round(x, 3))
+df_stocks['buy_price'] = (df_stocks['average_buy_price'] * df_stocks['quantity']).apply(lambda x: round(x, 3))
+df_stocks['profit_loss'] = (df_stocks['current_value'] - df_stocks['buy_price']).apply(lambda x: round(x, 3))
 
 df_crypto = pd.DataFrame(my_crypto)
 df_user = pd.DataFrame(user, index=[0])
