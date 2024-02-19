@@ -1,6 +1,6 @@
-# Data folders
+# Data and IDE folders
 data/*
-
+.idea/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
